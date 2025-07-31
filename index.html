@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pembelajaran Interaktif PowerPoint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals (Stone, Amber) -->
+    <!-- Application Structure Plan: A single-page application with a persistent left sidebar for navigation. This allows users to follow the learning path sequentially or jump directly to specific modules. The main content area uses a card-based layout for clarity. This structure was chosen to balance guided learning with user-controlled exploration, which is ideal for a self-paced tutorial. -->
+    <!-- Visualization & Content Choices: - Module 1: Interactive diagram (HTML/CSS) for the UI to engage users from the start. Goal: Inform. - Module 2: Accordions (HTML/JS) to manage text density. Goal: Organize. - Module 3: A Chart.js bar chart to visually demonstrate data presentation instead of just describing it. Goal: Compare/Inform. - Module 4: Embedded videos in a modal to keep users on the page. Goal: Inform/Engage. - Module 5: Checklist format for tips for scannability. Goal: Inform. All choices avoid SVG/Mermaid and focus on making the instructional content more interactive and less static. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .sidebar-link.active {
+            background-color: #f59e0b;
+            color: white;
+            font-weight: 600;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white border-r border-stone-200 p-6 fixed h-full hidden lg:block">
+            <h2 class="text-xl font-bold text-amber-600 mb-6">Materi Belajar</h2>
+            <nav id="sidebar-nav">
+                <ul class="space-y-2">
+                    <li><a href="#modul-1" class="sidebar-link block px-4 py-2 rounded-md text-stone-600 hover:bg-amber-50 hover:text-amber-700 transition-colors">Modul 1: Memulai</a></li>
+                    <li><a href="#modul-2" class="sidebar-link block px-4 py-2 rounded-md text-stone-600 hover:bg-amber-50 hover:text-amber-700 transition-colors">Modul 2: Teks & Objek</a></li>
+                    <li><a href="#modul-3" class="sidebar-link block px-4 py-2 rounded-md text-stone-600 hover:bg-amber-50 hover:text-amber-700 transition-colors">Modul 3: Desain</a></li>
+                    <li><a href="#modul-4" class="sidebar-link block px-4 py-2 rounded-md text-stone-600 hover:bg-amber-50 hover:text-amber-700 transition-colors">Modul 4: Dinamisme</a></li>
+                    <li><a href="#modul-5" class="sidebar-link block px-4 py-2 rounded-md text-stone-600 hover:bg-amber-50 hover:text-amber-700 transition-colors">Modul 5: Presentasi Efektif</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 lg:ml-64 p-6 md:p-10">
+            <header class="mb-10">
+                <h1 class="text-4xl font-bold text-stone-900">Pembelajaran Interaktif PowerPoint</h1>
+                <p class="text-lg text-stone-600 mt-2">Dari Pemula Hingga Mahir, Selangkah Demi Selangkah.</p>
+            </header>
+
+            <!-- Modul 1 -->
+            <section id="modul-1" class="mb-16 scroll-mt-20">
+                <h2 class="text-3xl font-bold text-stone-800 mb-6">Modul 1: Memulai dengan PowerPoint</h2>
+                <p class="mb-8 text-stone-600">Modul ini adalah fondasi Anda. Kita akan belajar cara membuka PowerPoint, mengenal bagian-bagian utamanya, dan membuat presentasi pertama Anda. Setiap elemen dirancang untuk memberikan pemahaman dasar yang kuat sebelum melangkah lebih jauh.</p>
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-lg border border-stone-200">
+                        <h3 class="text-xl font-semibold mb-3">1.1 Pengenalan Antarmuka</h3>
+                        <p class="text-stone-600">Saat membuka PowerPoint, Anda akan melihat beberapa bagian utama. Arahkan kursor ke area bernomor pada diagram di bawah untuk mengetahui namanya.</p>
+                        <div class="mt-4 p-4 border rounded-lg bg-stone-100 relative h-80">
+                            <div class="absolute top-2 left-2 w-full h-8 bg-stone-300 rounded-t-md flex items-center px-4 font-mono text-sm text-stone-600">Ribbon</div>
+                            <div class="absolute top-12 left-2 w-1/4 h-64 bg-stone-300 rounded-bl-md flex items-center justify-center font-mono text-sm text-stone-600">Thumbnails</div>
+                            <div class="absolute top-12 left-1/4 ml-2 w-[calc(75%-1rem)] h-64 bg-stone-200 rounded-br-md flex items-center justify-center font-mono text-lg text-stone-600">Slide Pane</div>
+                            <div class="absolute bottom-2 right-2 font-mono text-xs text-stone-500">Status Bar</div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-stone-200">
+                        <h3 class="text-xl font-semibold mb-3">1.4 Mengelola Slide</h3>
+                        <p class="mb-4 text-stone-600">Anda akan sering menambah, menghapus, atau mengatur ulang slide. Ini adalah aksi-aksi paling dasar dalam menyusun presentasi Anda.</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                            <div class="p-4 bg-green-50 border border-green-200 rounded-lg transform hover:scale-105 transition-transform">
+                                <span class="text-3xl">➕</span>
+                                <p class="mt-2 font-semibold text-green-800">Tambah Slide</p>
+                            </div>
+                            <div class="p-4 bg-red-50 border border-red-200 rounded-lg transform hover:scale-105 transition-transform">
+                                <span class="text-3xl">❌</span>
+                                <p class="mt-2 font-semibold text-red-800">Hapus Slide</p>
+                            </div>
+                            <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg transform hover:scale-105 transition-transform">
+                                <span class="text-3xl">📋</span>
+                                <p class="mt-2 font-semibold text-blue-800">Duplikasi Slide</p>
+                            </div>
+                            <div class="p-4 bg-yellow-50 border border-yellow-200 rounded-lg transform hover:scale-105 transition-transform">
+                                <span class="text-3xl">🔄</span>
+                                <p class="mt-2 font-semibold text-yellow-800">Ubah Tata Letak</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Modul 2 -->
+            <section id="modul-2" class="mb-16 scroll-mt-20">
+                <h2 class="text-3xl font-bold text-stone-800 mb-6">Modul 2: Bekerja dengan Teks & Objek Dasar</h2>
+                <p class="mb-8 text-stone-600">Sekarang kita akan mulai mengisi slide Anda dengan konten. Modul ini mencakup cara memasukkan dan memformat teks, serta menambahkan elemen visual dasar seperti bentuk dan gambar untuk memperkaya slide Anda.</p>
+                <div class="space-y-4 accordion-container">
+                    <div class="bg-white rounded-lg border border-stone-200">
+                        <button class="accordion-toggle w-full flex justify-between items-center p-6 text-left">
+                            <h3 class="text-xl font-semibold">2.1 Memasukkan dan Memformat Teks</h3>
+                            <span class="transform transition-transform text-amber-600">▼</span>
+                        </button>
+                        <div class="accordion-content px-6 pb-6 text-stone-600">
+                            <p>Teks adalah inti dari sebagian besar presentasi. Pelajari cara menambahkan dan memformatnya dengan benar.</p>
+                            <ul class="list-disc list-inside mt-4 space-y-2">
+                                <li>Gunakan **Kotak Teks (Text Box)** dari tab 'Insert' untuk teks di mana saja.</li>
+                                <li>Manfaatkan **Placeholder** yang ada di tata letak slide untuk kemudahan.</li>
+                                <li>Gunakan grup **Font & Paragraph** di tab 'Home' untuk mengubah jenis, ukuran, warna, dan perataan teks.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg border border-stone-200">
+                        <button class="accordion-toggle w-full flex justify-between items-center p-6 text-left">
+                            <h3 class="text-xl font-semibold">2.2 Menyisipkan Bentuk (Shapes) dan SmartArt</h3>
+                             <span class="transform transition-transform text-amber-600">▼</span>
+                        </button>
+                        <div class="accordion-content px-6 pb-6 text-stone-600">
+                            <p>Bentuk dan SmartArt membantu visualisasi informasi menjadi lebih mudah dipahami.</p>
+                            <ul class="list-disc list-inside mt-4 space-y-2">
+                                <li>Pilih berbagai **Bentuk** dari tab 'Insert' -> 'Shapes'.</li>
+                                <li>Gunakan **SmartArt** untuk membuat diagram proses, siklus, atau hierarki dengan cepat.</li>
+                                <li>Gunakan tab **Shape Format** dan **SmartArt Design** untuk kustomisasi.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Modul 3 -->
+            <section id="modul-3" class="mb-16 scroll-mt-20">
+                <h2 class="text-3xl font-bold text-stone-800 mb-6">Modul 3: Desain dan Visualisasi</h2>
+                <p class="mb-8 text-stone-600">Desain yang baik membuat presentasi terlihat profesional. Di sini kita akan belajar tentang tema, latar belakang, Slide Master untuk konsistensi, serta cara menyajikan data dengan tabel dan bagan.</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-lg border border-stone-200">
+                        <h3 class="text-xl font-semibold mb-3">3.3 Menguasai Slide Master</h3>
+                        <p class="text-stone-600 mb-4">Slide Master adalah "induk" yang mengontrol tampilan semua slide. Gunakan untuk menambahkan logo atau mengubah font secara konsisten di seluruh presentasi.</p>
+                        <div class="flex items-center justify-center space-x-4">
+                            <div class="text-center">
+                                <div class="w-24 h-16 bg-stone-200 border-2 border-dashed rounded-md flex items-center justify-center">Tanpa</div>
+                                <p class="text-sm mt-1">Tidak Konsisten</p>
+                            </div>
+                            <span class="text-2xl text-amber-600 font-bold">→</span>
+                            <div class="text-center">
+                                <div class="w-24 h-16 bg-amber-100 border-2 border-amber-400 rounded-md flex items-center justify-center">Dengan</div>
+                                <p class="text-sm mt-1">Konsisten & Rapi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-stone-200">
+                        <h3 class="text-xl font-semibold mb-3">3.4 Menyajikan Data dengan Bagan</h3>
+                        <p class="text-stone-600 mb-4">Bagan (chart) adalah cara efektif untuk memvisualisasikan data. Interaksikan dengan bagan di bawah ini.</p>
+                        <div class="chart-container">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Modul 4 -->
+            <section id="modul-4" class="mb-16 scroll-mt-20">
+                <h2 class="text-3xl font-bold text-stone-800 mb-6">Modul 4: Menambahkan Dinamisme</h2>
+                <p class="mb-8 text-stone-600">Buat presentasi Anda lebih hidup dengan transisi antar slide, animasi pada objek, dan penyisipan media seperti audio dan video. Klik thumbnail di bawah untuk melihat contoh video tutorial.</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-lg border border-stone-200">
+                        <h3 class="text-xl font-semibold mb-3">4.1 Transisi & 4.2 Animasi</h3>
+                        <p class="text-stone-600">Gunakan tab **Transitions** untuk efek perpindahan antar slide dan tab **Animations** untuk memberi efek gerak pada objek. Ingat, gunakan secukupnya agar tidak berlebihan.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-stone-200">
+                        <h3 class="text-xl font-semibold mb-3">4.3 Audio & Video</h3>
+                        <p class="text-stone-600">Sisipkan media dari tab 'Insert' -> 'Media'. Anda bisa menyisipkan file dari komputer atau video online.</p>
+                         <button class="video-thumb mt-4" data-video-id="tM45bDaomwk">
+                            <img src="https://img.youtube.com/vi/tM45bDaomwk/mqdefault.jpg" alt="Video tutorial transisi" class="rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                            <p class="text-sm text-center mt-2 text-stone-600">Contoh Video: Transisi Animasi</p>
+                         </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Modul 5 -->
+            <section id="modul-5" class="scroll-mt-20">
+                <h2 class="text-3xl font-bold text-stone-800 mb-6">Modul 5: Presentasi Efektif dan Tips Lanjutan</h2>
+                <p class="mb-8 text-stone-600">Anda sudah punya semua alatnya. Sekarang, mari kita bahas cara membuat presentasi yang benar-benar berdampak dan meninggalkan kesan mendalam pada audiens Anda.</p>
+                <div class="bg-white p-6 rounded-lg border border-stone-200">
+                    <h3 class="text-xl font-semibold mb-4">5.3 Tips Desain Presentasi Efektif</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1">✓</span><span>**KISS (Keep It Simple, Stupid):** Jangan membebani slide dengan terlalu banyak informasi.</span></li>
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1">✓</span><span>**Satu Ide per Slide:** Fokus pada satu poin utama untuk setiap slide.</span></li>
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1">✓</span><span>**Gunakan Poin, Bukan Paragraf:** Audiens lebih mudah mencerna poin-poin singkat.</span></li>
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1">✓</span><span>**Kontras yang Baik:** Pastikan teks mudah dibaca dengan kontras warna yang jelas.</span></li>
+                        <li class="flex items-start"><span class="text-green-500 mr-3 mt-1">✓</span><span>**Konsistensi:** Manfaatkan Slide Master untuk menjaga konsistensi desain.</span></li>
+                    </ul>
+                     <button class="video-thumb mt-6" data-video-id="TczpfKV-Fe8">
+                        <img src="https://img.youtube.com/vi/TczpfKV-Fe8/mqdefault.jpg" alt="Video tutorial presentasi efektif" class="rounded-lg shadow-md hover:shadow-xl transition-shadow w-1/2 mx-auto">
+                        <p class="text-sm text-center mt-2 text-stone-600">Tonton: Tips Presentasi Efektif</p>
+                     </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg overflow-hidden w-11/12 md:w-3/4 lg:w-1/2 relative">
+            <button id="close-modal" class="absolute top-2 right-4 text-white text-3xl hover:text-stone-300">&times;</button>
+            <div class="aspect-w-16 aspect-h-9">
+                <iframe id="video-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Accordion functionality
+            const accordionToggles = document.querySelectorAll('.accordion-toggle');
+            accordionToggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const content = toggle.nextElementSibling;
+                    const icon = toggle.querySelector('span');
+                    
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+
+            // Chart.js implementation
+            const ctx = document.getElementById('myChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                    datasets: [{
+                        label: 'Penjualan (dalam juta)',
+                        data: [12, 19, 3, 5],
+                        backgroundColor: [
+                            'rgba(251, 146, 60, 0.2)',
+                            'rgba(245, 158, 11, 0.2)',
+                            'rgba(252, 211, 77, 0.2)',
+                            'rgba(234, 179, 8, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(251, 146, 60, 1)',
+                            'rgba(245, 158, 11, 1)',
+                            'rgba(252, 211, 77, 1)',
+                            'rgba(234, 179, 8, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` Penjualan: ${context.raw} juta`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Sidebar active state on scroll
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('#sidebar-nav a');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-50% 0px -50% 0px' });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // FIX: Add click listener for sidebar navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // Mencegah perilaku default tautan
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Video Modal
+            const videoModal = document.getElementById('video-modal');
+            const videoIframe = document.getElementById('video-iframe');
+            const closeModalBtn = document.getElementById('close-modal');
+            const videoThumbs = document.querySelectorAll('.video-thumb');
+
+            videoThumbs.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    const videoId = thumb.getAttribute('data-video-id');
+                    videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                    videoModal.classList.remove('hidden');
+                });
+            });
+            
+            const closeModal = () => {
+                videoIframe.src = '';
+                videoModal.classList.add('hidden');
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+            videoModal.addEventListener('click', (e) => {
+                if(e.target === videoModal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
